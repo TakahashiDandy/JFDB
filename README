@@ -1,0 +1,26 @@
+Usage in java code for connection:
+Import TakahashiJFDB.jar
+
+JFDBConfiguration config = new JFDBConfiguration(
+                "Your Database Host", 
+                "Your Database Username", 
+                "Your Database password", 
+                "Your Database Name");
+JFDBCommand command = new JFDBCommand(config.getConnection());
+
+
+Usage in java for DML:
+
+//Insert
+String[] insertValues = {"63123","Takahashi", "Dandy"};
+command.insertData("tablename",insertValues);
+
+//Update
+String[] ColumnTable = {"FirstName", "LastName"};
+String[] UpdateValue = {"Takahashi", "Dandy"};
+String whereClause = "employeenumber = 63123";
+command.updateData("tablename",ColumnTable, UpdateValue, whereClause);
+
+//Delete
+String whereClause = "employeenumber = 63123";
+command.deleteData("tablename", whereClause);
